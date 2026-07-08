@@ -1,3 +1,40 @@
+# 💻 Modern Developer Portfolio
+
+A sleek, premium, and highly interactive developer portfolio built to showcase my professional skills, projects, and technical expertise. The core design philosophy centers around a clean **Code Syntax / TypeScript Theme**, blending high-performance code architecture with fluid user experiences.
+
+🚀 **[Live Demo](https://portfolio-xi-five-95.vercel.app/)**
+
+---
+## ✨ Features
+
+- **TypeScript-Themed UI:** A unique layout crafted for developers, mimicking a real code editor environment with precise syntax coloring.
+- **Dynamic Scroll Animations:** Smooth, cinematic section reveals and custom slide-ups powered by `Framer Motion`.
+- **Infinite Marquee Carousel:** An uninterrupted, linear looping technology stack showcase that runs entirely on hardware-accelerated animations.
+- **Adaptive Grid Systems:** Fully responsive layouts (Desktop, Tablet, Mobile) optimized with utility-first utility-first responsiveness.
+- **Type-Safe Component Architecture:** Built ground-up with TypeScript for strict type checking and clean, robust components.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+- **Core Framework:** React 19
+- **Type System:** TypeScript
+- **Styling & Layout:** Tailwind CSS
+- **Animation Engine:** Framer Motion (`motion/react`)
+- **Icons:** Lucide React
+
+--
+## 💻 Preview
+<p align="center">
+  <img src="./src/assets/portfolio-preview.png" alt="Portfolio Preview" width="800px">
+</p>
+
+
+
+
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
