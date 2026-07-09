@@ -26,7 +26,7 @@ A sleek, premium, and highly interactive developer portfolio built to showcase m
 --
 ## 💻 Preview
 <p align="center">
-  <img src="./src/assets/portfolio-preview.png" alt="Portfolio Preview" width="800px">
+  <img src="./src/assets/portfolio-preview.png" alt="Portfolio Preview">
 </p>
 
 
