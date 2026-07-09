@@ -6,10 +6,15 @@ import { ColorsDot } from './shared/ColorsDot';
 import mohamImage from "../assets/mohab.webp"
 import { heroCardVariants, heroImageVariants } from "./shared/Animation";
 import { motion } from 'motion/react';
+import { useState } from 'react';
+import Terminal from './Terminal';
+
 
 export default function Hero() {
     const roleData = HeroInfo.find(item => item.label === "role")?.value;
     const roles = Array.isArray(roleData) ? roleData : ["\"Front-End Developer\""];
+
+    const [isTerminalOpen, setIsTerminalOpen] = useState(false);
 
     return (
 
@@ -149,6 +154,22 @@ export default function Hero() {
                 </motion.div>
 
             </div>
+
+            {/* terminal button */}
+            <button
+                onClick={() => setIsTerminalOpen(true)}
+                className="fixed bottom-3 left-3 bg-gray-800 hover:bg-gray-700 text-green-400 p-4 rounded-full border border-green-500/30 shadow-lg transition-all duration-300 flex items-center justify-center group z-48 opacity-50 hover:opacity-100 hover:scale-105"
+                title="Open Terminal"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                </svg>
+                <span className="absolute left-16 bg-gray-950 text-xs px-2 py-1 rounded border border-gray-800 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Interactive Terminal
+                </span>
+            </button>
+            {isTerminalOpen && <Terminal onClose={() => setIsTerminalOpen(false)} />}
+                
         </section>
     );
 }
