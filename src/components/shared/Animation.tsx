@@ -130,7 +130,7 @@ export const contactLeftVariants: Variants = {
         opacity: 1,
         x: 0,
         transition: {
-            duration: 1.0,
+            duration: .5,
             ease: [0.16, 1, 0.3, 1],
         }
     }
@@ -145,7 +145,7 @@ export const contactRightVariants: Variants = {
         opacity: 1,
         x: 0,
         transition: {
-            duration: 1.0,
+            duration: .5,
             ease: [0.16, 1, 0.3, 1],
         }
     }
