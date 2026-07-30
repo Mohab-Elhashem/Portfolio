@@ -17,16 +17,16 @@ function Projects() {
                 </SectionHeader>
             </motion.div>
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full pt-10"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 w-full pt-10"
                 variants={projectsContainerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.1 }}
             >
                 {
-                    projectCategories.map((card, index) => (
+                    projectCategories.map((card) => (
                         <motion.div
-                            key={index}
+                            key={card.demo}
                             variants={projectCardVariants}
                             whileHover={{
                                 y: -8,
