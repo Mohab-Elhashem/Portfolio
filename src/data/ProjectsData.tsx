@@ -1,4 +1,4 @@
-import landingImage from "../assets/landingPageLight.webp"
+import modernDashboardImage from "../assets/modernDashboard.webp"
 import dashboardImage from "../assets/dashboardDark.webp"
 import dukkanekImage from "../assets/dukkaned.webp"
 import Quicstart from "../assets/Quicstart.webp"
@@ -12,6 +12,13 @@ interface projectCategoriesProps {
 }
 
 export const projectCategories: projectCategoriesProps[] = [
+    {
+        image: modernDashboardImage,
+        title: "'Modern Dashboard'",
+        description: "A modern, high-performance admin dashboard built with Next.js 16 (App Router) and TypeScript to deliver seamless server-side rendering and end-to-end type safety. It features a responsive UI styled with Tailwind CSS and Shadcn UI, complete with dynamic Dark/Light mode support. The platform integrates interactive data visualizations via Recharts and sortable data tables using TanStack Table v9. Additionally, it incorporates client-side data persistence, real-time mapping powered by OpenStreetMap/Pigeon Maps, and robust form handling using React Hook Form and Zod.",
+        skills: ["[ 'Next.js' ,", "'React.js' , ", "'TypeScript',"," 'Tailwind CSS' , ", "'Zod'", ", 'Shadcn ui' ]"],
+        demo: "https://modern-dashboard-gamma.vercel.app/",
+    },
     {
         image: dukkanekImage,
         title: "'Dukkanek Store'",
@@ -33,13 +40,6 @@ export const projectCategories: projectCategoriesProps[] = [
         description: "Developed a high-performance, responsive analytics dashboard using React, Vite, and TypeScript for absolute type safety.Implemented interactive, data-driven charts and metrics utilizing Recharts to visualize complex data structures.Engineered a fully responsive layout with seamless Dark/Light mode toggling using Tailwind CSS.Focused on clean code architecture and optimized asset bundling for rapid loading times.",
         skills: ["[ 'React.js' ,", "'TypeScript' , ", "'Recharts', ", "'Tailwind CSS' ]"],
         demo: "https://admin-dashboard-beta-self-17.vercel.app/",
-    },
-    {
-        image: landingImage,
-        title: "'Landing Page'",
-        description: "Developed a modern, type-safe landing page for an AI agency designed to showcase artificial intelligence solutions using React, Typescript, and Tailwind CSS.Optimized bundling and performance using Vite, and deployed the live app via Vercel through GitHub.",
-        skills: ["[ 'React.js' ,", "'TypeScript' , ", "'Tailwind CSS ,'","'tsparticles'", ", 'Redux Toolkit' ]"],
-        demo: "https://modern-landing-page-sable-omega.vercel.app/",
     },
 ];
 
