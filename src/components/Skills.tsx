@@ -7,7 +7,7 @@ export default function Skills() {
 
 
     return (
-        <motion.section id="skills" className="relative lg:px-6 px-0 md:py-20"
+        <motion.section id="skills" dir="ltr" className="relative lg:px-6 px-0 md:py-20"
             variants={skillsContainerVariants}
             initial="hidden"
             whileInView="visible"

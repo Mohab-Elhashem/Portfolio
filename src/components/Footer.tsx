@@ -18,7 +18,7 @@ export default function Footer() {
         setIsLiked(!isLiked);
     }
     return (
-        <section id="footer" className="py-10 px-3 text-center bg-footer">
+        <section id="footer" dir="ltr" className="py-10 px-3 text-center bg-footer">
             <div className="flex items-center gap-5 flex-col text-slate-400">
                 <p>{"// "}And finally if you liked this portfolio, you can give it a heart.</p>
                 <button

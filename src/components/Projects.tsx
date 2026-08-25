@@ -5,7 +5,7 @@ import { projectsContainerVariants, projectCardVariants, titleRevealVariants } f
 
 function Projects() {
     return (
-        <section id="projects" className="relative pt-10 md:pt-15">
+        <section id="projects" dir="ltr" className="relative pt-10 md:pt-15">
             <motion.div
                 variants={titleRevealVariants}
                 initial="hidden"

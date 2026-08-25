@@ -4,8 +4,8 @@ interface NavItmProps{
 }
 
 export const NavItems: NavItmProps[] = [
-    { label: 'home', href: '#home' },
-    { label: 'skills', href: '#skills' },
-    { label: 'projects', href: '#projects' },
-    { label: 'contact', href: '#contact' },
+    { label: 'nav.home', href: '#home' },
+    { label: 'nav.skills', href: '#skills' },
+    { label: 'nav.projects', href: '#projects' },
+    { label: 'nav.contact', href: '#contact' },
 ]

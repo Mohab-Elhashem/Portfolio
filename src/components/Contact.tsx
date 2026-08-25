@@ -7,7 +7,7 @@ import { motion } from "motion/react"
 
 function Contact() {
     return (
-        <section id="contact" className="py-10">
+        <section id="contact" dir="ltr" className="py-10">
             <motion.div
                 variants={titleRevealVariants}
                 initial="hidden"

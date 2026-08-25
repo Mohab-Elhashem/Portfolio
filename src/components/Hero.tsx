@@ -89,6 +89,7 @@ export default function Hero() {
 
                 {/* content */}
                 <motion.div className="w-full max-w-170"
+                    dir='ltr'
                     initial="hidden"
                     animate="visible"
                     variants={heroCardVariants}>
@@ -101,7 +102,7 @@ export default function Hero() {
                             {/* comment */}
                             <p className='text-slate-500 mb-4 italic whitespace-pre-line'>
                                 {`/*
-                                        @description=> Junior Front-End Developer with a solid foundation in building responsive, user-friendly web apps, highly focused on clean, maintainable code.
+                                        @description=> Front-End Developer with a solid foundation in building responsive, user-friendly web apps, highly focused on clean, maintainable code.
                                         @stack=> React.js, Next.js, TypeScript, Tailwind CSS, Redux Toolkit.
                                     */`}
                             </p>
