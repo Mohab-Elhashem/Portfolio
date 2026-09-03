@@ -1,9 +1,9 @@
-import { Check, Download, Palette } from "lucide-react";
+import { Check, Download, Palette, Menu, X } from "lucide-react";
 import { NavItems } from "../data/Navdata";
 import { useTheme, type ThemeType } from "../hooks/useTheme";
 import { useState } from "react";
 import { Link as ScrollLink } from 'react-scroll';
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { navbarVariants } from "./shared/Animation";
 import { useLanguage } from "../hooks/useLanguage";
 import { useTranslation } from "react-i18next";
@@ -17,20 +17,24 @@ const themeOptions: { id: ThemeType; label: string; preview: string }[] = [
 export default function Navbar() {
     const [theme, setTheme] = useTheme();
     const [showDropdown, setShowDropdown] = useState<boolean>(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+    
     // language
     const { t } = useTranslation();
     const { currentLang, toggleLanguage } = useLanguage();
 
+    const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
     return (
         <motion.header
-            className="fixed top-0 left-0 right-0 z-49 w-full bg-bg-main/80 backdrop-blur-md border-b border-slate-200/5 shadow-lg selection:bg-primary/20"
+            className="fixed top-0 left-0 right-0 z-50 w-full bg-bg-main/80 backdrop-blur-md border-b border-slate-200/5 shadow-lg selection:bg-primary/20"
             variants={navbarVariants}
             animate="visible"
             initial="hidden"
         >
             <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3 lg:px-6">
                 {/* logo */}
-                <div className="flex items-center gap-0.5 font-mono text-xl font-bold tracking-tight select-none" >
+                <div className="flex items-center gap-0.5 font-mono text-xl font-bold tracking-tight select-none">
                     <span className="text-primary transition-colors duration-300">&lt;</span>
                     <span
                         style={{ backgroundImage: 'var(--gradient-logo)' }}
@@ -45,7 +49,8 @@ export default function Navbar() {
                         transition={{ duration: 1, ease: "linear", repeat: Infinity }}
                     >_</motion.span>
                 </div>
-                {/* links */}
+
+                {/* Desktop Links */}
                 <nav className="hidden md:block">
                     <ul className="flex items-center gap-2">
                         {NavItems.map((item) => {
@@ -71,8 +76,9 @@ export default function Navbar() {
                         })}
                     </ul>
                 </nav>
-                {/* theme */}
-                <div className="flex items-center gap-5">
+
+                {/* Actions (Language, Theme, CV, Mobile Toggle) */}
+                <div className="flex items-center gap-3 sm:gap-5">
                     {/* language */}
                     <button
                         type="button"
@@ -82,8 +88,7 @@ export default function Navbar() {
                         title={currentLang.startsWith('ar') ? "Switch to English" : "التحويل للعربية"}
                     >
                         <span
-                            className={`h-6 w-6 rounded-full bg-primary shadow-md transition-transform duration-300 ease-in-out ${currentLang.startsWith('ar') ? 'translate-x-8' : 'translate-x-0'
-                                }`}
+                            className={`h-6 w-6 rounded-full bg-primary shadow-md transition-transform duration-300 ease-in-out ${currentLang.startsWith('ar') ? 'translate-x-8' : 'translate-x-0'}`}
                         />
                         <span
                             dir="rtl"
@@ -97,6 +102,8 @@ export default function Navbar() {
                             </span>
                         </span>
                     </button>
+
+                    {/* Theme selector */}
                     <div className="relative">
                         <button
                             name="drop button"
@@ -108,10 +115,10 @@ export default function Navbar() {
                             <Palette className="h-5 w-5" />
                             <span className="hidden sm:inline text-xs font-medium capitalize">{theme}</span>
                         </button>
-                        {/* dropdown theme*/}
+
+                        {/* Dropdown theme */}
                         {showDropdown && (
                             <>
-                                {/* close dropdown when onclick in anywhere*/}
                                 <div className="fixed inset-0 z-10" onClick={() => setShowDropdown(false)} />
                                 <div className="absolute right-0 mt-2 z-20 w-48 rounded-xl border border-slate-200/10 bg-bg-card p-2 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200">
                                     {themeOptions.map((option) => (
@@ -122,8 +129,9 @@ export default function Navbar() {
                                                 setTheme(option.id);
                                                 setShowDropdown(false);
                                             }}
-                                            className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors hover:bg-primary/10 ${theme === option.id ? "text-primary" : "text-text-main/80"
-                                                }`}
+                                            className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors hover:bg-primary/10 ${
+                                                theme === option.id ? "text-primary" : "text-text-main/80"
+                                            }`}
                                         >
                                             <div className="flex items-center gap-2.5">
                                                 <span className={`h-3 w-3 rounded-full ${option.preview}`} />
@@ -136,14 +144,77 @@ export default function Navbar() {
                             </>
                         )}
                     </div>
-                    {/* download cv */}
-                    <a href="/Mohab-Elsayed-CV.pdf" download="/Mohab-Elsayed-CV.pdf"
-                        className="flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-bg-main shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-primary/30 active:scale-105">
+
+                    {/* Download CV */}
+                    <a
+                        href="/Mohab-Elsayed-CV.pdf"
+                        download="/Mohab-Elsayed-CV.pdf"
+                        className="hidden sm:flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-bg-main shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-primary/30 active:scale-105"
+                    >
                         <Download className="h-4 w-4" />
                         <span>CV</span>
                     </a>
+
+                    {/* Mobile Menu Toggle Button */}
+                    <button
+                        type="button"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="flex md:hidden items-center justify-center p-2 rounded-lg text-text-main hover:text-primary hover:bg-primary/10 transition-colors"
+                        aria-label="Toggle Menu"
+                    >
+                        {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                    </button>
                 </div>
             </div>
+
+            {/* Mobile Menu Dropdown */}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="md:hidden overflow-hidden border-t border-slate-200/10 bg-bg-main/95 backdrop-blur-lg px-4 py-4"
+                    >
+                        <ul className="flex flex-col gap-2">
+                            {NavItems.map((item) => {
+                                const targetId = item.href.replace('#', '');
+                                return (
+                                    <li key={item.href}>
+                                        <ScrollLink
+                                            to={targetId}
+                                            href={item.href}
+                                            spy={true}
+                                            smooth={true}
+                                            offset={-50}
+                                            duration={500}
+                                            onClick={closeMobileMenu}
+                                            className="block rounded-lg px-4 py-3 text-base font-medium text-text-main/80 hover:bg-primary/10 hover:text-primary transition-colors capitalize"
+                                            activeClass="!text-primary bg-primary/10"
+                                        >
+                                            {t(item.label)}
+                                        </ScrollLink>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+
+                        {/* CV button inside mobile menu */}
+                        <div className="mt-4 pt-4 border-t border-slate-200/10 sm:hidden">
+                            <a
+                                href="/Mohab-Elsayed-CV.pdf"
+                                download="/Mohab-Elsayed-CV.pdf"
+                                onClick={closeMobileMenu}
+                                className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-bg-main shadow-lg shadow-primary/20"
+                            >
+                                <Download className="h-4 w-4" />
+                                <span>Download CV</span>
+                            </a>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.header>
-    )
+    );
 }
